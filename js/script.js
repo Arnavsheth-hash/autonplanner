@@ -408,6 +408,7 @@ function updateCode() {
 
         if (angle !== null && angle !== undefined) {
             const roundedAngle = Math.round(angle * 180 / Math.PI * 4) / 4;
+            newCode += `// Node ${index + 1}\n`;
             newCode += `chassis.turnToHeading(${formatNumberWithCeiling(roundedAngle)}, 4000);\n`;
         }
 
@@ -415,7 +416,7 @@ function updateCode() {
         const roundedY = Math.round(convertPixelToFieldUnits(points[index + 1].y - points[0].y) * 4) / 4;
         newCode +=
             `chassis.moveToPoint(${formatNumberWithCeiling(roundedX)}, ` +
-            `${formatNumberWithCeiling(roundedY)}, 4000);\n`;
+            `${formatNumberWithCeiling(roundedY)}, 4000);\n\n`;
     });
 
     codeTextbox.setValue(newCode);
