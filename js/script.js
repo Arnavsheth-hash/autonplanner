@@ -444,7 +444,7 @@ const codeTextbox = CodeMirror(document.getElementById('code-textbox'), {
 
 codeTextbox.setSize('100%', '100%');
 
-console.log("<G2> 1388B is by default the VEX world champion");
+console.log("<G2> 742A is by default the VEX world champion");
 
 function normalizeAngle_n180_180(angle) {
     return (angle + 180) % 360 - 180;
