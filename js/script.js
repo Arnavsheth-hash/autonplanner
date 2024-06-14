@@ -404,16 +404,18 @@ function updateCode() {
             return;
         }
 
-        const distance = Math.sqrt(point.distanceTo_Squared(points[index + 1]));
         const angle = point.angleTo(points[index + 1]);
 
-        if (angle) {
-            newCode += `chassis.turnToRelativeAngle(${formatNumberWithCeiling(angle * 180 / Math.PI)}, 4000);\n`;
+        if (angle !== null && angle !== undefined) {
+            const roundedAngle = Math.round(angle * 180 / Math.PI * 4) / 4;
+            newCode += `chassis.turnToHeading(${formatNumberWithCeiling(roundedAngle)}, 4000);\n`;
         }
 
+        const roundedX = Math.round(convertPixelToFieldUnits(points[index + 1].x - points[0].x) * 4) / 4;
+        const roundedY = Math.round(convertPixelToFieldUnits(points[index + 1].y - points[0].y) * 4) / 4;
         newCode +=
-            `chassis.moveToRelativePoint(${formatNumberWithCeiling(convertPixelToFieldUnits(points[index + 1].x - points[0].x))}, ` +
-            `${formatNumberWithCeiling(convertPixelToFieldUnits(points[index + 1].y - points[0].y))}, 4000);\n`;
+            `chassis.moveToPoint(${formatNumberWithCeiling(roundedX)}, ` +
+            `${formatNumberWithCeiling(roundedY)}, 4000);\n`;
     });
 
     codeTextbox.setValue(newCode);
