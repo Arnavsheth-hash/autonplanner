@@ -132,7 +132,7 @@ class Point {
         // Draw the circle
         ctx.beginPath();
         ctx.arc(this._canvasX, this._canvasY, POINT_RADIUS, 0, Math.PI * 2);
-        ctx.fillStyle = 'purple';
+        ctx.fillStyle = 'white';
         ctx.fill();
 
         // Draw the line
@@ -145,12 +145,12 @@ class Point {
             this._canvasX + POINT_RADIUS * Math.cos(-this.theta),
             this._canvasY + POINT_RADIUS * Math.sin(-this.theta)
         );
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = 'coral';
         ctx.lineWidth = 3;
         ctx.stroke();
 
         // Draw the number
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'black';
         ctx.font = '20px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
@@ -159,7 +159,7 @@ class Point {
         // Draw the border
         ctx.beginPath();
         ctx.arc(this._canvasX, this._canvasY, POINT_RADIUS, 0, Math.PI * 2);
-        ctx.strokeStyle = 'black';
+        ctx.strokeStyle = 'gray';
         ctx.lineWidth = 3;
         ctx.stroke();
     }
@@ -168,7 +168,7 @@ class Point {
     drawMini(num = 0) {
         ctx.beginPath();
         ctx.arc(this._canvasX, this._canvasY, MINI_POINT_RADIUS, 0, Math.PI * 2);
-        ctx.fillStyle = 'purple';
+        ctx.fillStyle = 'white';
         ctx.fill();
     }
 

@@ -264,3 +264,24 @@ main {
                     border-radius: 5px;
                     font-size: 13px;
                 }
+                .robot-config {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start; /* Change to flex-start */
+                    padding-left: 1rem;
+                    font-family: 'iceland';
+                }
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                    cursor: text;
+                }
+                li {
+                    list-style-type: square;
+                }
+
+                .sidebar li:hover {
+                    color: coral;
+                }
