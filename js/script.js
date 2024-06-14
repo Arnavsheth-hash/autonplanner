@@ -449,3 +449,50 @@ console.log("<G2> 742A is by default the VEX world champion");
 function normalizeAngle_n180_180(angle) {
     return (angle + 180) % 360 - 180;
 }
+function updateRobotX() {
+    if (isEmpty(robotX.value) || Number.isNaN(robotX.value) || robotX.value.endsWith('.')) {
+        selectedPoint.moveToPoint(0, selectedPoint.y);
+        return;
+    }
+    const xInputValue = constrainInputToField(parseFloat(robotX.value));
+    if (selectedPoint) {
+        const xOffset = xInputValue - points[0].x;
+        points.forEach((point) => {
+            point.x += xOffset;
+        });
+    }
+    updateCode();
+    console.log("updating robot x to", robotX.value, ". Selected point:", points.indexOf(selectedPoint) + 1);
+}
+
+function updateRobotY() {
+    if (isEmpty(robotY.value) || Number.isNaN(robotY.value) || robotY.value.endsWith('.')) {
+        selectedPoint.moveToPoint(selectedPoint.x, 0);
+        return;
+    }
+    const yInputValue = constrainInputToField(parseFloat(robotY.value));
+    if (selectedPoint) {
+        const yOffset = yInputValue - points[0].y;
+        points.forEach((point) => {
+            point.y += yOffset;
+        });
+    }
+    updateCode();
+    console.log("updating robot y to", robotY.value, ". Selected point:", points.indexOf(selectedPoint) + 1);
+}
+
+function updateRobotAngle() {
+    if (isEmpty(robotAngle.value) || Number.isNaN(robotAngle.value) || robotAngle.value.endsWith('.')) {
+        selectedPoint.theta = 0;
+        return;
+    }
+    const angleInputValue = normalizeAngle_n180_180(parseFloat(robotAngle.value));
+    if (selectedPoint) {
+        const angleOffset = angleInputValue - points[0].theta;
+        points.forEach((point) => {
+            point.theta += angleOffset;
+        });
+    }
+    updateCode();
+    console.log("updating robot angle to", robotAngle.value, ". Selected point:", points.indexOf(selectedPoint) + 1);
+}
