@@ -19,39 +19,7 @@ function fieldSwitcherEventHandlers() {
     });
 }
 
-// Event handlers for media control buttons
-function mediaControlEventHandlers() {
-    const playButton = document.getElementById('play-button');
-    const pauseButton = document.getElementById('pause-button');
-    const resetButton = document.getElementById('reset-button');
 
-    // Hide play button and show pause button when play button is clicked
-    playButton.addEventListener('click', () => {
-        playButton.style.display = 'none';
-        pauseButton.style.display = 'block';
-        console.log('play button pressed, pause button displayed');
-    });
-
-    // Hide pause button and show play button when pause button is clicked
-    pauseButton.addEventListener('click', () => {
-        playButton.style.display = 'block';
-        pauseButton.style.display = 'none';
-        console.log('pause button pressed, play button displayed');
-    });
-
-    // Reset buttons to initial state when reset button is clicked
-    resetButton.addEventListener('click', () => {
-        if (pauseButton.style.display === 'block') {
-            playButton.style.display = 'block';
-            pauseButton.style.display = 'none';
-            console.log('reset button pressed, play button displayed');
-        }
-        console.log('reset button pressed');
-    });
-}
-
-fieldSwitcherEventHandlers();
-mediaControlEventHandlers();
 
 // Get canvas size
 const fieldCanvas = document.getElementById('field-canvas');
